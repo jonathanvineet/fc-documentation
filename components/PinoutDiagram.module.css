@@ -1,0 +1,102 @@
+.section {
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.title {
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+}
+
+.diagram {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-card);
+}
+
+.chip {
+    width: 120px;
+    height: 120px;
+    background: #2a2a35;
+    border: 1px solid #444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+}
+
+.pin {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #444;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.pin:hover {
+    background: var(--color-primary);
+    box-shadow: 0 0 10px var(--color-primary);
+}
+
+/* Positioning example pins */
+.pin:nth-child(1) {
+    top: 20px;
+    left: 20px;
+}
+
+/* VBAT */
+.pin:nth-child(2) {
+    top: 20px;
+    right: 20px;
+}
+
+/* GND */
+.pin:nth-child(3) {
+    bottom: 20px;
+    left: 20px;
+}
+
+/* 5V */
+.pin:nth-child(4) {
+    bottom: 20px;
+    right: 20px;
+}
+
+/* RX1 */
+
+.infoPanel {
+    width: 300px;
+    text-align: left;
+    padding: 2rem;
+    min-height: 200px;
+}
+
+.pinTitle {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+.pinDesc {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}

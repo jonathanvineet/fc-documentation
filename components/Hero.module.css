@@ -1,0 +1,82 @@
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: var(--nav-height);
+}
+
+.content {
+    text-align: center;
+    z-index: 2;
+    max-width: 800px;
+}
+
+.title {
+    font-size: 5rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+    font-weight: 300;
+}
+
+.ctaGroup {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.primaryBtn,
+.secondaryBtn {
+    padding: 1rem 2.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.primaryBtn {
+    background: var(--color-primary);
+    color: var(--bg-primary);
+    border: 1px solid var(--color-primary);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+}
+
+.primaryBtn:hover {
+    background: transparent;
+    color: var(--color-primary);
+    box-shadow: 0 0 40px rgba(0, 240, 255, 0.4);
+}
+
+.secondaryBtn {
+    background: transparent;
+    border: 1px solid var(--border-glass);
+    color: var(--text-primary);
+}
+
+.secondaryBtn:hover {
+    border-color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.bgGlow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(0, 240, 255, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+    z-index: 1;
+    pointer-events: none;
+}
