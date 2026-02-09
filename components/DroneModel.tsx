@@ -1,19 +1,15 @@
 'use client';
-import { useRef, Suspense } from 'react';
+import React, { useRef, Suspense, Component, ReactNode } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { useGLTF } from '@react-three/drei';
+import { useGLTF, Html } from '@react-three/drei';
 import { Group } from 'three';
 
-function DroneModelContent() {
+// Fallback geometric drone model
+function DroneModelFallback() {
     const groupRef = useRef<Group>(null);
-
-    let drone;
-    try {
-        drone = useGLTF('/models/drone.gltf');
-    } catch (error) {
-        console.log('Using fallback drone model');
-        drone = null;
-    }
+    const bodyColor = "#e5e7eb";
+    const armColor = "#1f2937";
+    const propColor = "#0066ff";
 
     useFrame((state) => {
         if (groupRef.current) {
@@ -21,18 +17,6 @@ function DroneModelContent() {
             groupRef.current.rotation.y += 0.002;
         }
     });
-
-    if (drone && drone.scene) {
-        return (
-            <group ref={groupRef}>
-                <primitive object={drone.scene.clone()} scale={2} />
-            </group>
-        );
-    }
-
-    const bodyColor = "#e5e7eb";
-    const armColor = "#1f2937";
-    const propColor = "#0066ff";
 
     return (
         <group ref={groupRef} scale={[1, 1, 1]}>
@@ -88,10 +72,75 @@ function DroneModelContent() {
     );
 }
 
+// GLTF Model Component
+function DroneModelGLTF() {
+    const groupRef = useRef<Group>(null);
+    const drone = useGLTF('/models/drone.gltf');
+
+    useFrame((state) => {
+        if (groupRef.current) {
+            // Very gentle hovering animation
+            // Reduced amplitude to 0.05 to prevent "going inside" feeling
+            groupRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.05;
+            // Slow rotation around the Y vertical axis (which is Z in the model local space if rotated)
+            // But we are rotating the GROUP, so Y is world up.
+            groupRef.current.rotation.y += 0.001;
+        }
+    });
+
+    return (
+        <group ref={groupRef}>
+            {/*
+                - Scale reduced to 0.4 ("zoom out")
+                - Rotation X -90 deg to lay flat (assuming typical Blender Z-up export)
+            */}
+            <primitive
+                object={drone.scene.clone()}
+                scale={0.4}
+                rotation={[-Math.PI / 2, 0, 0]}
+            />
+        </group>
+    );
+}
+
+interface ErrorBoundaryProps {
+    children: ReactNode;
+    fallback: ReactNode;
+}
+
+interface ErrorBoundaryState {
+    hasError: boolean;
+}
+
+class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
+    constructor(props: ErrorBoundaryProps) {
+        super(props);
+        this.state = { hasError: false };
+    }
+
+    static getDerivedStateFromError(_: Error) {
+        return { hasError: true };
+    }
+
+    componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+        console.error("Error loading drone model:", error, errorInfo);
+    }
+
+    render() {
+        if (this.state.hasError) {
+            return this.props.fallback;
+        }
+
+        return this.props.children;
+    }
+}
+
 export default function DroneModel() {
     return (
-        <Suspense fallback={null}>
-            <DroneModelContent />
-        </Suspense>
+        <ErrorBoundary fallback={<DroneModelFallback />}>
+            <Suspense fallback={<DroneModelFallback />}>
+                <DroneModelGLTF />
+            </Suspense>
+        </ErrorBoundary>
     );
 }
