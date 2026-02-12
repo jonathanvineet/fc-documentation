@@ -57,4 +57,66 @@ To replace the placeholder with your own drone 3D model:
 
 The site will automatically load your custom model. If no model is found, it displays a fallback geometric drone.
 
+---
+
+## 📚 Flight Controller Documentation
+
+This repository includes **comprehensive technical documentation** for the ELCO F7 Ultimate flight controller in the `/docs` folder.
+
+### Documentation Structure
+
+```
+docs/
+├── README.md                      # Main documentation index
+├── hardware-specifications.md     # Complete hardware specs
+├── system-architecture.md         # System design & block diagrams  
+├── pinout-reference.md           # Detailed pinout guide
+├── wiring-guide.md               # Wiring examples & integration
+├── firmware-setup.md             # Betaflight/INAV/ArduPilot setup
+├── first-time-setup.md           # Calibration & first flight
+├── ground-station.md             # Mission planning (GPS/autonomous)
+├── troubleshooting.md            # FAQ & problem solving
+├── safety-regulatory.md          # Safety warnings & compliance
+└── appendix.md                   # Glossary, BOM, references
+```
+
+### Quick Links
+
+- **[Start Here: Documentation Index](docs/README.md)**
+- [Hardware Specifications](docs/hardware-specifications.md)
+- [Wiring Guide](docs/wiring-guide.md)
+- [Firmware Setup](docs/firmware-setup.md)
+- [Troubleshooting](docs/troubleshooting.md)
+
+### Documentation Features
+
+✅ **Complete Coverage:**
+- Title, versioning, and revision history
+- Hardware specifications (mechanical & electrical)
+- Annotated pinouts and connectivity diagrams
+- Wiring examples with reference tables
+- Firmware setup (Betaflight, INAV, ArduPilot, PX4)
+- Sensor calibration procedures
+- Ground station & mission planning
+- Comprehensive troubleshooting & FAQ
+- Safety warnings and regulatory compliance
+- Appendix with glossary and references
+
+✅ **Best Practices:**
+- Structured headings and clear instructions
+- Step-by-step setup workflows
+- Hardware compatibility references
+- Placeholders for images/diagrams
+- Tables, examples, and callouts
+- Following PX4/ArduPilot documentation standards
+
+### For Contributors
+
+Found an error or want to improve the documentation?
+1. Fork this repository
+2. Make your changes in the `/docs` folder
+3. Submit a pull request
+
+---
+
 # fc-documentation

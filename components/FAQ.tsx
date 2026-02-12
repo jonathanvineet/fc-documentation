@@ -13,12 +13,12 @@ export default function FAQ() {
 
                 <div>
                     <h3 style={{ color: 'var(--color-primary)', marginBottom: '0.5rem' }}>Blackbox logging not working?</h3>
-                    <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>Check if the SD card is formatted to FAT32. For onboard dash, ensure "Blackbox" is enabled in the Configuration tab.</p>
+                    <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>Check if the SD card is formatted to FAT32. For onboard dash, ensure &quot;Blackbox&quot; is enabled in the Configuration tab.</p>
                 </div>
 
                 <div>
                     <h3 style={{ color: 'var(--color-primary)', marginBottom: '0.5rem' }}>4V5 rail issues?</h3>
-                    <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>The 4V5 pad is powered by USB. If your receiver doesn't power up on USB, ensure it's connected to a 4V5 pad, not a 5V rail which might only be active on LiPo.</p>
+                    <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>The 4V5 pad is powered by USB. If your receiver doesn&apos;t power up on USB, ensure it&apos;s connected to a 4V5 pad, not a 5V rail which might only be active on LiPo.</p>
                 </div>
             </div>
         </section>
